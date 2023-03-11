@@ -28,9 +28,9 @@ function getBookById(req, res) {
 // POST /books
 function addBook(req, res) {
   try {
-  const book = req.body;
-  const newBook = booksModel.addBook(book);
-  res.status(201).json(newBook);
+    const book = req.body;
+    const newBook = booksModel.addBook(book);
+    res.status(201).json(newBook);
   } catch (err) {
     res.status(500).json({ error: `An error occurred while saving the book` });
   }
