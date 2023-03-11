@@ -1,7 +1,7 @@
 const fs = require('fs');
 const uuid = require('uuid');
 
-const filePath = 'books.json';
+const filePath = 'data/books.json';
 
 // Read all books from the JSON file
 function getAllBooks() {

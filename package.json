@@ -10,6 +10,7 @@
   "author": "Dawid Oskwarek",
   "license": "ISC",
   "dependencies": {
+    "ajv": "^8.12.0",
     "express": "^4.18.2",
     "uuid": "^9.0.0"
   }
