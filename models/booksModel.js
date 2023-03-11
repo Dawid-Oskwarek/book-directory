@@ -5,31 +5,20 @@ const filePath = 'books.json';
 
 // Read all books from the JSON file
 function getAllBooks() {
-    try {
-      const data = fs.readFileSync(filePath, 'utf8');
-      return JSON.parse(data);
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
-  }
+    const data = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(data);
+}
   
   // Read a single book with the specified ID from the JSON file
   function getBookById(id) {
-    try {
       const data = fs.readFileSync(filePath, 'utf8');
       const books = JSON.parse(data);
       const book = books.find(book => book.id === String(id));
       return book;
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
   }
   
   // Add a new book to the JSON file
   function addBook(book) {
-    try {
       const data = fs.readFileSync(filePath, 'utf8');
       const books = JSON.parse(data);
       const newId = generateId();
@@ -40,10 +29,6 @@ function getAllBooks() {
   
       fs.writeFileSync(filePath, JSON.stringify(books));
       return newBook;
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
   }
   
   // Update a book with the specified ID in the JSON file
