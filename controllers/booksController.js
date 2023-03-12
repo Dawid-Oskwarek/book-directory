@@ -12,7 +12,7 @@ function getAllBooks(req, res) {
 
 // GET /books/:id
 function getBookById(req, res) {
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
   try {
     const book = booksModel.getBookById(id);
     if (book) {
@@ -36,8 +36,41 @@ function addBook(req, res) {
   }
 }
 
+// PUT /books/:id
+function updateBookById(req, res) {
+  try {
+    const id = req.params.id.toString();
+    const updatedBook = req.body;
+    const updatedBookData = booksModel.updateBookById(id, updatedBook);
+    if (updatedBookData) {
+      res.status(200).json(updatedBookData);
+    } else {
+      res.status(404).json({ error: `Book with ID ${id} not found` });
+    }
+  } catch (err) {
+    res.status(500).json({ error: `An error occurred while updating the book` });
+  }
+}
+
+// DELETE /books/:id
+function deleteBookById(req, res) {
+  try {
+    const id = req.params.id.toString();
+    const deletedBook = booksModel.deleteBookById(id);
+    if (deletedBook) {
+      res.status(204).send();
+    } else {
+      res.status(404).json({ error: `Book with ID ${id} not found` });
+    }
+  } catch (err) {
+    res.status(500).json({ error: `An error occurred while updating the book` });
+  }
+}
+
 module.exports = {
     getAllBooks,
     getBookById,
     addBook,
+    updateBookById,
+    deleteBookById
   };
