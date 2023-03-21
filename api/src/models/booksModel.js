@@ -1,5 +1,5 @@
 const fs = require('fs');
-const uuid = require('uuid');
+const uuid = require('uuid-random');
 
 const filePath = 'src/data/books.json';
 
@@ -57,7 +57,7 @@ function deleteBookById(id) {
   
 // Generate a new unique ID for a book
 function generateId() {
-  return uuid.v1();
+  return uuid();
 }
   
   module.exports = {
