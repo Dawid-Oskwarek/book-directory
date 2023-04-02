@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function BookTable() {
   const [books, setBooks] = useState([]);
@@ -10,6 +13,7 @@ function BookTable() {
       setBooks(response.data);
     } catch (error) {
       console.log(error);
+      toast.error("Error fetching books");
     }
   };
 
@@ -17,8 +21,10 @@ function BookTable() {
     try {
       await axios.delete(`http://localhost:3001/books/${id}`);
       fetchBooks();
+      toast.success("Book deleted successfully");
     } catch (error) {
       console.log(error);
+      toast.error("Error deleting book");
     }
   };
 
@@ -45,9 +51,11 @@ function BookTable() {
             <td>{book.name}</td>
             <td>{book.genre}</td>
             <td>
+            <Link to={`/edit-book/${book.id}`}>
               <button className="btn-edit">
                 <i className="fas fa-edit"></i>
               </button>
+            </Link>
               <button className="btn-delete" onClick={() => deleteBook(book.id)}>
                 <i className="fas fa-trash"></i>
               </button>

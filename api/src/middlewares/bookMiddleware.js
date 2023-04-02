@@ -26,7 +26,19 @@ function checkDuplicateBookName() {
   }
 }
 
+function validateBook() {
+  return (req, res, next) => {
+    const { name, genre } = req.body;
+
+    if (!name || !genre ) {
+      return res.status(400).json({ error: "Name and Genre are required" });
+    } 
+    next();
+  }
+}
+
 module.exports = {
     validateSchema,
-    checkDuplicateBookName
+    checkDuplicateBookName,
+    validateBook
 }
