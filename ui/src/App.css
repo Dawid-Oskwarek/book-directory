@@ -44,6 +44,19 @@
     cursor: pointer;
     flex-grow: 1;
   }
+
+  .btn-form {
+    text-decoration: none;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .btn-form:hover {
+    color: #585858;
+  }
   
   .btn-primary {
     background-color: #007bff;
@@ -122,4 +135,21 @@
   
   .btn-delete:hover {
     color: rgb(167, 0, 0);
+  }
+
+  label {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px;
+
+    font-weight: bold;
+  }
+  
+  input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 300px;
+    max-width: 100%;
   }
